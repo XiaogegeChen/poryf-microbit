@@ -1,6 +1,22 @@
 
 //% color="#808080" weight=23 icon="\uf11c"
 namespace pbit_传感器 {
+    export enum enLED1 {
+        
+        //% blockId="OFF" block="灭"
+        OFF = 0,
+        //% blockId="ON" block="亮"
+        ON =1
+    }
+    //% blockId=mbit_LED1 block="LED灯|管脚 %pin|状态 %value"
+    //% weight=5
+    //% blockGap=8
+    //% color="#C814B8"
+    export function LED1(pin: DigitalPin, value: enLED1): void {
+
+        pins.digitalWritePin(pin, value);
+
+    }
 
     export enum enRocker {
         //% blockId="Nostate" block="无"
