@@ -164,7 +164,7 @@ namespace pbit_传感器 {
            
            
    /*旋转电位器*/ 
-    //% blockId=mbit_RotaryPotentiometer block="旋转电位器 管脚 %Pin"
+    //% blockId=mbit_RotaryPotentiometer block="旋转电位器 管脚 %pin"
     //% weight=4
     //% blockGap=8
     //% color="#C814B8"
@@ -193,3 +193,302 @@ namespace pbit_传感器 {
             return false;
         }
     } 
+           
+           
+           
+    /*光敏电阻*/ 
+    //% blockId=mbit_PhotosensitiveResistance block="激光强度 管脚 %pin"
+    //% weight=4
+    //% blockGap=8
+    //% color="#C814B8"
+    export function PhotosensitiveResistance(pin:AnalogPin): number {
+        return pins.analogReadPin(pin);
+    }
+    
+    
+    /*红外避障传感器*/
+       export enum enInfraredObstacleAvoidance {
+        //% blockId="InfraredObstacleAvoidance" block="检测到障碍物"
+        InfraredObstacleAvoidance = 0,
+        //% blockId="NoInfraredObstacleAvoidance" block="未检测到障碍物"
+        NoInfraredObstacleAvoidance = 1
+           }
+    //% blockId=mbit_InfraredObstacleAvoidance_Sensor block="红外避障传感器 管脚 %pin|状态 %value"
+    //% weight=4
+    //% blockGap=8
+    //% color="#C814B8"
+           export function InfraredObstacleAvoidance_Sensor(pin: DigitalPin, value: enInfraredObstacleAvoidance): boolean {
+        pins.setPull(pin, PinPullMode.PullUp);
+        if (pins.digitalReadPin(pin) == value) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+           
+           
+   /*碰撞传感器*/
+       export enum enCollision {
+        //% blockId="Collision" block="被撞击"
+        Collision = 0,
+        //% blockId="NoCollision" block="未被撞击"
+        NoCollision = 1
+           }
+    //% blockId=mbit_Collision_Sensor block="碰撞传感器 管脚 %pin|状态 %value"
+    //% weight=4
+    //% blockGap=8
+    //% color="#C814B8"
+           export function Collision_Sensor(pin: DigitalPin, value: enCollision): boolean {
+        pins.setPull(pin, PinPullMode.PullUp);
+        if (pins.digitalReadPin(pin) == value) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }   
+           
+           
+    /*触摸传感器*/
+       export enum enTouch {
+        //% blockId="Touch" block="触摸"
+        Touch = 0,
+        //% blockId="NoTouch" block="未触摸"
+        NoTouch = 1
+           }
+    //% blockId=mbit_Touch_Sensor block="触摸传感器 管脚 %pin|状态 %value"
+    //% weight=4
+    //% blockGap=8
+    //% color="#C814B8"
+           export function Touch_Sensor(pin: DigitalPin, value: enTouch): boolean {
+        pins.setPull(pin, PinPullMode.PullUp);
+        if (pins.digitalReadPin(pin) == value) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }  
+           
+           
+   /*灰度传感器*/ 
+    //% blockId=mbit_GrayLevel block="获取灰度值 管脚 %pin"
+    //% weight=4
+    //% blockGap=8
+    //% color="#C814B8"
+    export function GrayLevel(pin:AnalogPin): number {
+        return pins.analogReadPin(pin);
+    }  
+    
+   
+    /*摇杆*/ 
+    export enum enRocker {
+        //% blockId="Nostate" block="无"
+        Nostate = 0,
+        //% blockId="Up" block="上"
+        Up,
+        //% blockId="Down" block="下"
+        Down,
+        //% blockId="Left" block="左"
+        Left,
+        //% blockId="Right" block="右"
+        Right,
+        //% blockId="Press" block="按下"
+        Press
+    }
+    //% blockId=mbit_Rocker block="摇杆 X方向管脚（中间接口） %pin1|Y方向管脚（左侧接口） %pin2|Z方向管脚（右侧接口） %pin3|状态 %value"
+    //% weight=4
+    //% blockGap=8
+    //% color="#C814B8"
+    export function Rocker(pin1: AnalogPin, pin2: AnalogPin, pin3: DigitalPin, value: enRocker): boolean {
+
+        pins.setPull(pin3, PinPullMode.PullUp);
+        let x = pins.analogReadPin(pin1);
+        let y = pins.analogReadPin(pin2);
+        let z = pins.digitalReadPin(pin3);
+        let now_state = enRocker.Nostate;
+
+        if (x < 100) // 上
+        {
+
+            now_state = enRocker.Right;
+
+        }
+        else if (x > 700) //
+        {
+
+            now_state = enRocker.Left;
+        }
+        else  // 左右
+        {
+            if (y < 100) //右
+            {
+                now_state = enRocker.Down;
+            }
+            else if (y > 700) //左
+            {
+                now_state = enRocker.Up;
+            }
+        }
+        if (z == 0)
+            now_state = enRocker.Press;
+        if (now_state == value)
+            return true;
+        else
+            return false;
+
+    }
+    
+    
+    /*电压读取模块*/
+    //% blockId=mbit_Voltage block="获取电压值（V） 管脚 %pin"
+    //% weight=4
+    //% blockGap=8
+    //% color="#C814B8"
+    export function Voltage(pin:AnalogPin): number {
+        return pins.analogReadPin(pin)*33/10230;
+    }  
+    
+    
+     /*滑动变阻器*/ 
+    //% blockId=mbit_SlipRheostat block="变阻器电阻模拟值 管脚 %pin"
+    //% weight=4
+    //% blockGap=8
+    //% color="#C814B8"
+    export function SlipRheostat(pin:AnalogPin): number {
+        return pins.analogReadPin(pin);
+    }
+    
+    
+    /*开启继电器*/ 
+    //% blockId=mbit_Relay_Sensor_Open block="开启继电器 管脚 %pin"
+    //% weight=4
+    //% blockGap=8
+    //% color="#C814B8"
+           export function Relay_Sensor(pin: DigitalPin): void {
+       pins.digitalWritePin(pin, 0);   
+    } 
+    
+    
+    /*关闭继电器*/ 
+    //% blockId=mbit_Relay_Sensor_Close block="关闭继电器 管脚 %pin"
+    //% weight=4
+    //% blockGap=8
+    //% color="#C814B8"
+           export function Relay_Sensor(pin: DigitalPin): void {
+       pins.digitalWritePin(pin, 1);
+    } 
+    
+    
+    /*土壤湿度传感器*/ 
+    //% blockId=mbit_SoilMoisture block="土壤湿度模拟值 管脚 %pin"
+    //% weight=4
+    //% blockGap=8
+    //% color="#C814B8"
+    export function SoilMoisture(pin:AnalogPin): number {
+        return pins.analogReadPin(pin);
+    }
+    
+    
+    /*水位监测模块*/ 
+    //% blockId=mbit_WaterLevel block="水位高度模拟值 管脚 %pin"
+    //% weight=4
+    //% blockGap=8
+    //% color="#C814B8"
+    export function WaterLevel(pin:AnalogPin): number {
+        return pins.analogReadPin(pin);
+    }
+    
+    
+    /*LM35温度传感器*/ 
+    //% blockId=mbit_LM35Temperature block="(LM35)温度值 管脚 %pin"
+    //% weight=4
+    //% blockGap=8
+    //% color="#C814B8"
+    export function LM35Temperature(pin:AnalogPin): number {
+        return pins.analogReadPin(pin)*330/1024;
+    }
+    
+    
+    /*开启红外发射传感器*/ 
+    //% blockId=mbit_InfraredEmission_Sensor_Open block="开启红外发射传感器 管脚 %pin"
+    //% weight=4
+    //% blockGap=8
+    //% color="#C814B8"
+           export function InfraredEmission_Sensor(pin: DigitalPin): void {
+       pins.digitalWritePin(pin, 1);   
+    } 
+    
+    
+    /*关闭红外发射传感器*/ 
+    //% blockId=mbit_InfraredEmission_Sensor_Close block="关闭红外发射传感器 管脚 %pin"
+    //% weight=4
+    //% blockGap=8
+    //% color="#C814B8"
+           export function InfraredEmission_Sensor(pin: DigitalPin): void {
+       pins.digitalWritePin(pin, 0);
+    } 
+    
+    
+    /*红外接收传感器*/
+       export enum enInfraredReception {
+        //% blockId="InfraredReception" block="接收到红外信号"
+        InfraredReception = 1,
+        //% blockId="NoInfraredReception" block="未接收到红外信号"
+        NoInfraredReception = 0
+           }
+    //% blockId=mbit_InfraredReception_Sensor block="触摸传感器 管脚 %pin|状态 %value"
+    //% weight=4
+    //% blockGap=8
+    //% color="#C814B8"
+           export function Touch_Sensor(pin: DigitalPin, value: enInfraredReception): boolean {
+        pins.setPull(pin, PinPullMode.PullUp);
+        if (pins.digitalReadPin(pin) == value) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }
+           
+           
+      /*震动传感器*/
+       export enum enShock {
+        //% blockId="Shock" block="震动"
+        Shock = 1,
+        //% blockId="NoShock" block="未震动"
+        NoShock = 0
+           }
+    //% blockId=mbit_Shock_Sensor block="触摸传感器 管脚 %pin|状态 %value"
+    //% weight=4
+    //% blockGap=8
+    //% color="#C814B8"
+           export function Shock_Sensor(pin: DigitalPin, value: enShock): boolean {
+        let theShockState: number
+        pins.setPull(pin, PinPullMode.PullUp);
+        if(pins.digitalReadPin(pin) == 1){
+             basic.pause(100);
+            if(pins.digitalReadPin(pin) == 1){
+                theShockState= 0;
+            }
+            else{
+               theShockState= 1;
+            }
+        }
+         else{
+             basic.pause(100);
+            if(pins.digitalReadPin(pin) == 1){
+                theShockState= 1;
+            }
+            else{
+               theShockState= 0;
+            }
+         }
+        if (theShockState == value) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    }     
