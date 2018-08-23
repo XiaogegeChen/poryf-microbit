@@ -10,6 +10,7 @@ namespace pbit_传感器 {
         //% blockId="ON" block="亮"
         ON =1
     }
+    
     //% blockId=mbit_LED1 block="LED灯 管脚 %pin|状态 %value"
     //% weight=5
     //% blockGap=8
@@ -55,9 +56,10 @@ namespace pbit_传感器 {
     /*火焰传感器*/
        export enum enFire {
         //% blockId="Fire" block="有火焰"
-        Voice = 0,
+        Fire = 0,
         //% blockId="NoFire" block="无火焰"
-        NoVoice = 1
+        NoFire = 1
+           }
     //% blockId=mbit_Fire_Sensor block="火焰传感器 管脚 %pin|状态 %value"
     //% weight=4
     //% blockGap=8
@@ -79,7 +81,8 @@ namespace pbit_传感器 {
         NoWater = 0,
         //% blockId="Water" block="有水滴"
         Watere = 1
-    //% blockId=mbit_Fire_Sensor block="水滴传感器 管脚 %pin|状态 %value"
+           }
+    //% blockId=mbit_Water_Sensor block="水滴传感器 管脚 %pin|状态 %value"
     //% weight=4
     //% blockGap=8
     //% color="#C814B8"
@@ -100,6 +103,7 @@ namespace pbit_传感器 {
         Magnet = 0,
         //% blockId="NoMagnet" block="无磁铁"
         NoMagnet = 1
+           }
     //% blockId=mbit_Magnet_Sensor block="磁感应传感器 管脚 %pin|状态 %value"
     //% weight=4
     //% blockGap=8
@@ -121,6 +125,7 @@ namespace pbit_传感器 {
         HumanInfrared = 1,
         //% blockId="NoHumanInfrared" block="无人"
         NoHumanInfrared = 0
+           }
     //% blockId=mbit_HumanInfrared_Sensor block="磁感应传感器 管脚 %pin|状态 %value"
     //% weight=4
     //% blockGap=8
@@ -142,6 +147,7 @@ namespace pbit_传感器 {
         InfraredTracking = 0,
         //% blockId="NoInfraredTracking" block="未检测到黑色"
         NoInfraredTracking = 1
+           }
     //% blockId=mbit_InfraredTracking_Sensor block="磁感应传感器 管脚 %pin|状态 %value"
     //% weight=4
     //% blockGap=8
@@ -157,4 +163,22 @@ namespace pbit_传感器 {
     } 
            
            
-           
+   /*旋转电位器*/ 
+    //% blockId=mbit_RotaryPotentiometer block="旋转电位器 管脚 %Pin"
+    //% weight=4
+    //% blockGap=8
+    //% color="#C814B8"
+    export function RotaryPotentiometer(pin:AnalogPin): number {
+
+        // send pulse
+        pins.setPull(Trig, PinPullMode.PullNone);
+        pins.digitalWritePin(Trig, 0);
+        control.waitMicros(2);
+        pins.digitalWritePin(Trig, 1);
+        control.waitMicros(15);
+        pins.digitalWritePin(Trig, 0);
+
+        // read pulse
+        let d = pins.pulseIn(Echo, PulseValue.High, 23200);
+        return d / 58;
+    }
