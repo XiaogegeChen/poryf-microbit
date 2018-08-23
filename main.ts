@@ -126,7 +126,7 @@ namespace pbit_传感器 {
         //% blockId="NoHumanInfrared" block="无人"
         NoHumanInfrared = 0
            }
-    //% blockId=mbit_HumanInfrared_Sensor block="磁感应传感器 管脚 %pin|状态 %value"
+    //% blockId=mbit_HumanInfrared_Sensor block="人体红外传感器 管脚 %pin|状态 %value"
     //% weight=4
     //% blockGap=8
     //% color="#C814B8"
@@ -148,7 +148,7 @@ namespace pbit_传感器 {
         //% blockId="NoInfraredTracking" block="未检测到黑色"
         NoInfraredTracking = 1
            }
-    //% blockId=mbit_InfraredTracking_Sensor block="磁感应传感器 管脚 %pin|状态 %value"
+    //% blockId=mbit_InfraredTracking_Sensor block="红外循迹传感器 管脚 %pin|状态 %value"
     //% weight=4
     //% blockGap=8
     //% color="#C814B8"
@@ -169,16 +169,27 @@ namespace pbit_传感器 {
     //% blockGap=8
     //% color="#C814B8"
     export function RotaryPotentiometer(pin:AnalogPin): number {
-
-        // send pulse
-        pins.setPull(Trig, PinPullMode.PullNone);
-        pins.digitalWritePin(Trig, 0);
-        control.waitMicros(2);
-        pins.digitalWritePin(Trig, 1);
-        control.waitMicros(15);
-        pins.digitalWritePin(Trig, 0);
-
-        // read pulse
-        let d = pins.pulseIn(Echo, PulseValue.High, 23200);
-        return d / 58;
+        return pins.analogReadPin(pin);
     }
+    
+    
+    /*声音传感器*/
+       export enum enVoice {
+        //% blockId="Voice" block="有声音"
+        Voice = 0,
+        //% blockId="NoVoice" block="无声音"
+        NoVoice= 1
+           }
+    //% blockId=mbit_Voiced_Sensor block="声音传感器 管脚 %pin|状态 %value"
+    //% weight=4
+    //% blockGap=8
+    //% color="#C814B8"
+           export function Voice_Sensor(pin: DigitalPin, value: enVoice): boolean {
+        pins.setPull(pin, PinPullMode.PullUp);
+        if (pins.digitalReadPin(pin) == value) {
+            return true;
+        }
+        else {
+            return false;
+        }
+    } 
