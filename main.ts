@@ -460,7 +460,7 @@ namespace pbit_传感器 {
         //% blockId="NoShock" block="未震动"
         NoShock = 0
            }
-    //% blockId=mbit_Shock_Sensor block="触摸传感器 管脚 %pin|状态 %value"
+    //% blockId=mbit_Shock_Sensor block="震动传感器 管脚 %pin|状态 %value"
     //% weight=4
     //% blockGap=8
     //% color="#C814B8"
