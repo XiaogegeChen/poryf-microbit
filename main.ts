@@ -48,9 +48,9 @@ namespace pbit_传感器 {
     
     export enum enInfraredTracking {
         //% blockId="InfraredTracking" block="检测到黑色"
-        InfraredTracking = 0,
+        InfraredTracking = 1,
         //% blockId="NoInfraredTracking" block="未检测到黑色"
-        NoInfraredTracking = 1
+        NoInfraredTracking = 0
            }
     
     export enum enVoice {
@@ -169,14 +169,20 @@ namespace pbit_传感器 {
     //% weight=4
     //% blockGap=8
     //% color="#C814B8"
-           export function Water_Sensor(pin: DigitalPin, value: enWater): boolean {
+           export function Water_Sensor(pin: AnalogPin, value: enWater): boolean {
         pins.setPull(pin, PinPullMode.PullUp);
-        if (pins.digitalReadPin(pin) == value) {
-            return true;
+               let WaterState=0;
+        if (pins.analogReadPin(pin) > 200) {
+            WaterState=1;
         }
         else {
-            return false;
+            WaterState=0;
         }
+         if(WaterState == value){
+             return true;
+         }else{
+          return false;   
+         }
     } 
            
            
@@ -434,7 +440,7 @@ namespace pbit_传感器 {
     //% blockGap=8
     //% color="#C814B8"
     export function LM35Temperature(pin:AnalogPin): number {
-        return pins.analogReadPin(pin)*330/1024;
+        return pins.analogReadPin(pin)*330/1024-4;
     }
     
     
