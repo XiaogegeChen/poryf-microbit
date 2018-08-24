@@ -3,7 +3,7 @@
 namespace pbit_传感器 {
     
     
- /*单色灯亮灭*/
+ 
     export enum enLED1 { 
         //% blockId="OFF" block="灭"
         OFF = 0,
@@ -11,6 +11,93 @@ namespace pbit_传感器 {
         ON =1
     }
     
+    export enum enButton {
+        //% blockId="Press" block="按下"
+        Press = 0,
+        //% blockId="Realse" block="松开"
+        Realse = 1
+    }
+    
+    export enum enFire {
+        //% blockId="Fire" block="有火焰"
+        Fire = 0,
+        //% blockId="NoFire" block="无火焰"
+        NoFire = 1
+           }
+    
+     export enum enWater {
+        //% blockId="NoWater" block="无水滴"
+        NoWater = 0,
+        //% blockId="Water" block="有水滴"
+        Watere = 1
+           }
+    
+    export enum enMagnet {
+        //% blockId="Magnet" block="有磁铁"
+        Magnet = 0,
+        //% blockId="NoMagnet" block="无磁铁"
+        NoMagnet = 1
+           }
+    
+    export enum enHumanInfrared {
+        //% blockId="HumanInfrared" block="有人"
+        HumanInfrared = 1,
+        //% blockId="NoHumanInfrared" block="无人"
+        NoHumanInfrared = 0
+           }
+    
+    export enum enInfraredTracking {
+        //% blockId="InfraredTracking" block="检测到黑色"
+        InfraredTracking = 0,
+        //% blockId="NoInfraredTracking" block="未检测到黑色"
+        NoInfraredTracking = 1
+           }
+    
+    export enum enVoice {
+        //% blockId="Voice" block="有声音"
+        Voice = 0,
+        //% blockId="NoVoice" block="无声音"
+        NoVoice= 1
+           }
+    
+    export enum enInfraredObstacleAvoidance {
+        //% blockId="InfraredObstacleAvoidance" block="检测到障碍物"
+        InfraredObstacleAvoidance = 0,
+        //% blockId="NoInfraredObstacleAvoidance" block="未检测到障碍物"
+        NoInfraredObstacleAvoidance = 1
+           }
+    
+      export enum enCollision {
+        //% blockId="Collision" block="被撞击"
+        Collision = 0,
+        //% blockId="NoCollision" block="未被撞击"
+        NoCollision = 1
+           }
+    
+     export enum enTouch {
+        //% blockId="Touch" block="触摸"
+        Touch = 0,
+        //% blockId="NoTouch" block="未触摸"
+        NoTouch = 1
+           }
+    
+    export enum enRocker {
+        //% blockId="Nostate" block="无"
+        Nostate = 0,
+        //% blockId="Up" block="上"
+        Up,
+        //% blockId="Down" block="下"
+        Down,
+        //% blockId="Left" block="左"
+        Left,
+        //% blockId="Right" block="右"
+        Right,
+        //% blockId="Press" block="按下"
+        Press
+    }
+    
+    
+    /*单色灯亮灭*/
     //% blockId=mbit_LED1 block="LED灯 管脚 %pin|状态 %value"
     //% weight=5
     //% blockGap=8
@@ -32,12 +119,6 @@ namespace pbit_传感器 {
     
     
     /*按键*/ 
-    export enum enButton {
-        //% blockId="Press" block="按下"
-        Press = 0,
-        //% blockId="Realse" block="松开"
-        Realse = 1
-    }
     //% blockId=mbit_Button block="按键 管脚 %pin|状态 %value"
     //% weight=4
     //% blockGap=8
@@ -54,12 +135,6 @@ namespace pbit_传感器 {
     
     
     /*火焰传感器*/
-       export enum enFire {
-        //% blockId="Fire" block="有火焰"
-        Fire = 0,
-        //% blockId="NoFire" block="无火焰"
-        NoFire = 1
-           }
     //% blockId=mbit_Fire_Sensor block="火焰传感器 管脚 %pin|状态 %value"
     //% weight=4
     //% blockGap=8
@@ -76,12 +151,6 @@ namespace pbit_传感器 {
            
            
       /*水滴传感器*/
-       export enum enWater {
-        //% blockId="NoWater" block="无水滴"
-        NoWater = 0,
-        //% blockId="Water" block="有水滴"
-        Watere = 1
-           }
     //% blockId=mbit_Water_Sensor block="水滴传感器 管脚 %pin|状态 %value"
     //% weight=4
     //% blockGap=8
@@ -98,12 +167,6 @@ namespace pbit_传感器 {
            
            
      /*磁感应传感器*/
-       export enum enMagnet {
-        //% blockId="Magnet" block="有磁铁"
-        Magnet = 0,
-        //% blockId="NoMagnet" block="无磁铁"
-        NoMagnet = 1
-           }
     //% blockId=mbit_Magnet_Sensor block="磁感应传感器 管脚 %pin|状态 %value"
     //% weight=4
     //% blockGap=8
@@ -120,12 +183,6 @@ namespace pbit_传感器 {
            
            
       /*人体红外传感器*/
-       export enum enHumanInfrared {
-        //% blockId="HumanInfrared" block="有人"
-        HumanInfrared = 1,
-        //% blockId="NoHumanInfrared" block="无人"
-        NoHumanInfrared = 0
-           }
     //% blockId=mbit_HumanInfrared_Sensor block="人体红外传感器 管脚 %pin|状态 %value"
     //% weight=4
     //% blockGap=8
@@ -142,12 +199,6 @@ namespace pbit_传感器 {
            
            
      /*红外循迹传感器*/
-       export enum enInfraredTracking {
-        //% blockId="InfraredTracking" block="检测到黑色"
-        InfraredTracking = 0,
-        //% blockId="NoInfraredTracking" block="未检测到黑色"
-        NoInfraredTracking = 1
-           }
     //% blockId=mbit_InfraredTracking_Sensor block="红外循迹传感器 管脚 %pin|状态 %value"
     //% weight=4
     //% blockGap=8
@@ -174,12 +225,6 @@ namespace pbit_传感器 {
     
     
     /*声音传感器*/
-       export enum enVoice {
-        //% blockId="Voice" block="有声音"
-        Voice = 0,
-        //% blockId="NoVoice" block="无声音"
-        NoVoice= 1
-           }
     //% blockId=mbit_Voiced_Sensor block="声音传感器 管脚 %pin|状态 %value"
     //% weight=4
     //% blockGap=8
@@ -207,12 +252,6 @@ namespace pbit_传感器 {
     
     
     /*红外避障传感器*/
-       export enum enInfraredObstacleAvoidance {
-        //% blockId="InfraredObstacleAvoidance" block="检测到障碍物"
-        InfraredObstacleAvoidance = 0,
-        //% blockId="NoInfraredObstacleAvoidance" block="未检测到障碍物"
-        NoInfraredObstacleAvoidance = 1
-           }
     //% blockId=mbit_InfraredObstacleAvoidance_Sensor block="红外避障传感器 管脚 %pin|状态 %value"
     //% weight=4
     //% blockGap=8
@@ -229,12 +268,6 @@ namespace pbit_传感器 {
            
            
    /*碰撞传感器*/
-       export enum enCollision {
-        //% blockId="Collision" block="被撞击"
-        Collision = 0,
-        //% blockId="NoCollision" block="未被撞击"
-        NoCollision = 1
-           }
     //% blockId=mbit_Collision_Sensor block="碰撞传感器 管脚 %pin|状态 %value"
     //% weight=4
     //% blockGap=8
@@ -251,12 +284,6 @@ namespace pbit_传感器 {
            
            
     /*触摸传感器*/
-       export enum enTouch {
-        //% blockId="Touch" block="触摸"
-        Touch = 0,
-        //% blockId="NoTouch" block="未触摸"
-        NoTouch = 1
-           }
     //% blockId=mbit_Touch_Sensor block="触摸传感器 管脚 %pin|状态 %value"
     //% weight=4
     //% blockGap=8
@@ -282,21 +309,7 @@ namespace pbit_传感器 {
     }  
     
    
-    /*摇杆*/ 
-    export enum enRocker {
-        //% blockId="Nostate" block="无"
-        Nostate = 0,
-        //% blockId="Up" block="上"
-        Up,
-        //% blockId="Down" block="下"
-        Down,
-        //% blockId="Left" block="左"
-        Left,
-        //% blockId="Right" block="右"
-        Right,
-        //% blockId="Press" block="按下"
-        Press
-    }
+    /*摇杆*/
     //% blockId=mbit_Rocker block="摇杆 X方向管脚（中间接口） %pin1|Y方向管脚（左侧接口） %pin2|Z方向管脚（右侧接口） %pin3|状态 %value"
     //% weight=4
     //% blockGap=8
