@@ -96,6 +96,20 @@ namespace pbit_传感器 {
         Press
     }
     
+     export enum enInfraredReception {
+        //% blockId="InfraredReception" block="接收到红外信号"
+        InfraredReception = 1,
+        //% blockId="NoInfraredReception" block="未接收到红外信号"
+        NoInfraredReception = 0
+           }
+    
+    export enum enShock {
+        //% blockId="Shock" block="震动"
+        Shock = 1,
+        //% blockId="NoShock" block="未震动"
+        NoShock = 0
+           }
+    
     
     /*单色灯亮灭*/
     //% blockId=mbit_LED1 block="LED灯 管脚 %pin|状态 %value"
@@ -379,7 +393,7 @@ namespace pbit_传感器 {
     //% weight=4
     //% blockGap=8
     //% color="#C814B8"
-           export function Relay_Sensor(pin: DigitalPin): void {
+           export function Relay_Sensor_Open(pin: DigitalPin): void {
        pins.digitalWritePin(pin, 0);   
     } 
     
@@ -389,7 +403,7 @@ namespace pbit_传感器 {
     //% weight=4
     //% blockGap=8
     //% color="#C814B8"
-           export function Relay_Sensor(pin: DigitalPin): void {
+           export function Relay_Sensor_Close(pin: DigitalPin): void {
        pins.digitalWritePin(pin, 1);
     } 
     
@@ -429,7 +443,7 @@ namespace pbit_传感器 {
     //% weight=4
     //% blockGap=8
     //% color="#C814B8"
-           export function InfraredEmission_Sensor(pin: DigitalPin): void {
+           export function InfraredEmission_Sensor_Open(pin: DigitalPin): void {
        pins.digitalWritePin(pin, 1);   
     } 
     
@@ -439,23 +453,17 @@ namespace pbit_传感器 {
     //% weight=4
     //% blockGap=8
     //% color="#C814B8"
-           export function InfraredEmission_Sensor(pin: DigitalPin): void {
+           export function InfraredEmission_Sensor_Close(pin: DigitalPin): void {
        pins.digitalWritePin(pin, 0);
     } 
     
     
     /*红外接收传感器*/
-       export enum enInfraredReception {
-        //% blockId="InfraredReception" block="接收到红外信号"
-        InfraredReception = 1,
-        //% blockId="NoInfraredReception" block="未接收到红外信号"
-        NoInfraredReception = 0
-           }
-    //% blockId=mbit_InfraredReception_Sensor block="触摸传感器 管脚 %pin|状态 %value"
+    //% blockId=mbit_InfraredReception_Sensor block="红外接收传感器 管脚 %pin|状态 %value"
     //% weight=4
     //% blockGap=8
     //% color="#C814B8"
-           export function Touch_Sensor(pin: DigitalPin, value: enInfraredReception): boolean {
+           export function InfraredReception_Sensor(pin: DigitalPin, value: enInfraredReception): boolean {
         pins.setPull(pin, PinPullMode.PullUp);
         if (pins.digitalReadPin(pin) == value) {
             return true;
@@ -467,18 +475,12 @@ namespace pbit_传感器 {
            
            
       /*震动传感器*/
-       export enum enShock {
-        //% blockId="Shock" block="震动"
-        Shock = 1,
-        //% blockId="NoShock" block="未震动"
-        NoShock = 0
-           }
     //% blockId=mbit_Shock_Sensor block="震动传感器 管脚 %pin|状态 %value"
     //% weight=4
     //% blockGap=8
     //% color="#C814B8"
            export function Shock_Sensor(pin: DigitalPin, value: enShock): boolean {
-        let theShockState: number
+        let theShockState = 0;
         pins.setPull(pin, PinPullMode.PullUp);
         if(pins.digitalReadPin(pin) == 1){
              basic.pause(100);
