@@ -440,7 +440,7 @@ namespace pbit_传感器 {
     //% blockGap=8
     //% color="#C814B8"
     export function LM35Temperature(pin:AnalogPin): number {
-        return pins.analogReadPin(pin)*330/1024-4;
+        return pins.analogReadPin(pin)*330/1024;
     }
     
     
