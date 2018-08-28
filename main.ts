@@ -170,7 +170,6 @@ namespace pbit_传感器 {
     //% blockGap=8
     //% color="#C814B8"
            export function Water_Sensor(pin: AnalogPin, value: enWater): boolean {
-        pins.setPull(pin, PinPullMode.PullUp);
                let WaterState=0;
         if (pins.analogReadPin(pin) > 200) {
             WaterState=1;
