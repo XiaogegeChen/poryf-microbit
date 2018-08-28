@@ -85,15 +85,15 @@ namespace pbit_传感器 {
         //% blockId="Nostate" block="无"
         Nostate = 0,
         //% blockId="Up" block="上"
-        Up,
+        Up = 1,
         //% blockId="Down" block="下"
-        Down,
+        Down = 2,
         //% blockId="Left" block="左"
-        Left,
+        Left = 3,
         //% blockId="Right" block="右"
-        Right,
+        Right = 4,
         //% blockId="Press" block="按下"
-        Press
+        Press = 5
     }
     
      export enum enInfraredReception {
@@ -339,32 +339,32 @@ namespace pbit_传感器 {
         let x = pins.analogReadPin(pin1);
         let y = pins.analogReadPin(pin2);
         let z = pins.digitalReadPin(pin3);
-        let now_state = enRocker.Nostate;
+        let now_state = 0;
 
-        if (x < 100) // 上
+        if (x < 100) 
         {
 
-            now_state = enRocker.Right;
+            now_state = 4;
 
         }
-        else if (x > 700) //
+        else if (x > 700) 
         {
 
-            now_state = enRocker.Left;
+            now_state = 3;
         }
-        else  // 左右
+        else  
         {
-            if (y < 100) //右
+            if (y < 100) 
             {
-                now_state = enRocker.Down;
+                now_state = 2;
             }
-            else if (y > 700) //左
+            else if (y > 700) 
             {
-                now_state = enRocker.Up;
+                now_state = 1;
             }
         }
         if (z == 0)
-            now_state = enRocker.Press;
+            now_state = 5;
         if (now_state == value)
             return true;
         else
