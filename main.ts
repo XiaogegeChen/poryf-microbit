@@ -1,5 +1,5 @@
 
-//% color="#808080" weight=23 icon="\uf11c"
+//% color="#808080" weight=100 icon="\uf11c"
 namespace pbit_传感器 {
     
     
@@ -113,7 +113,7 @@ namespace pbit_传感器 {
     
     /*单色灯亮灭*/
     //% blockId=mbit_LED1 block="LED灯 管脚 %pin|状态 %value"
-    //% weight=5
+    //% weight=98
     //% blockGap=8
     //% color="#C814B8"
     export function LED1(pin: DigitalPin, value: enLED1): void {
@@ -123,7 +123,7 @@ namespace pbit_传感器 {
     
    /*单色灯亮度调节*/ 
    //% blockId=mbit_LED2 block="LED灯 管脚 %pin|亮度（0~255） %value"
-    //% weight=4
+    //% weight=96
     //% blockGap=8
     //% color="#C814B8"
     //% value.min=0 value.max=255
@@ -134,7 +134,7 @@ namespace pbit_传感器 {
     
     /*按键*/ 
     //% blockId=mbit_Button block="按键 管脚 %pin|状态 %value"
-    //% weight=4
+    //% weight=94
     //% blockGap=8
     //% color="#C814B8"
     export function Button(pin: DigitalPin, value: enButton): boolean {
@@ -150,7 +150,7 @@ namespace pbit_传感器 {
     
     /*火焰传感器*/
     //% blockId=mbit_Fire_Sensor block="火焰传感器 管脚 %pin|状态 %value"
-    //% weight=4
+    //% weight=84
     //% blockGap=8
     //% color="#C814B8"
            export function Fire_Sensor(pin: DigitalPin, value: enFire): boolean {
@@ -166,7 +166,7 @@ namespace pbit_传感器 {
            
       /*水滴传感器*/
     //% blockId=mbit_Water_Sensor block="水滴传感器 管脚 %pin|状态 %value"
-    //% weight=4
+    //% weight=82
     //% blockGap=8
     //% color="#C814B8"
            export function Water_Sensor(pin: AnalogPin, value: enWater): boolean {
@@ -187,7 +187,7 @@ namespace pbit_传感器 {
            
      /*磁感应传感器*/
     //% blockId=mbit_Magnet_Sensor block="磁感应传感器 管脚 %pin|状态 %value"
-    //% weight=4
+    //% weight=80
     //% blockGap=8
     //% color="#C814B8"
            export function Magnet_Sensor(pin: DigitalPin, value: enMagnet): boolean {
@@ -203,7 +203,7 @@ namespace pbit_传感器 {
            
       /*人体红外传感器*/
     //% blockId=mbit_HumanInfrared_Sensor block="人体红外传感器 管脚 %pin|状态 %value"
-    //% weight=4
+    //% weight=88
     //% blockGap=8
     //% color="#C814B8"
            export function HumanInfrared_Sensor(pin: DigitalPin, value: enHumanInfrared): boolean {
@@ -219,7 +219,7 @@ namespace pbit_传感器 {
            
      /*红外循迹传感器*/
     //% blockId=mbit_InfraredTracking_Sensor block="红外循迹传感器 管脚 %pin|状态 %value"
-    //% weight=4
+    //% weight=78
     //% blockGap=8
     //% color="#C814B8"
            export function InfraredTracking_Sensor(pin: DigitalPin, value: enInfraredTracking): boolean {
@@ -235,7 +235,7 @@ namespace pbit_传感器 {
            
    /*旋转电位器*/ 
     //% blockId=mbit_RotaryPotentiometer block="旋转电位器 管脚 %pin"
-    //% weight=4
+    //% weight=76
     //% blockGap=8
     //% color="#C814B8"
     export function RotaryPotentiometer(pin:AnalogPin): number {
@@ -245,7 +245,7 @@ namespace pbit_传感器 {
     
     /*声音传感器*/
     //% blockId=mbit_Voiced_Sensor block="声音传感器 管脚 %pin|状态 %value"
-    //% weight=4
+    //% weight=90
     //% blockGap=8
     //% color="#C814B8"
            export function Voice_Sensor(pin: DigitalPin, value: enVoice): boolean {
@@ -262,7 +262,7 @@ namespace pbit_传感器 {
            
     /*光敏电阻*/ 
     //% blockId=mbit_PhotosensitiveResistance block="激光强度 管脚 %pin"
-    //% weight=4
+    //% weight=74
     //% blockGap=8
     //% color="#C814B8"
     export function PhotosensitiveResistance(pin:AnalogPin): number {
@@ -272,7 +272,7 @@ namespace pbit_传感器 {
     
     /*红外避障传感器*/
     //% blockId=mbit_InfraredObstacleAvoidance_Sensor block="红外避障传感器 管脚 %pin|状态 %value"
-    //% weight=4
+    //% weight=72
     //% blockGap=8
     //% color="#C814B8"
            export function InfraredObstacleAvoidance_Sensor(pin: DigitalPin, value: enInfraredObstacleAvoidance): boolean {
@@ -288,7 +288,7 @@ namespace pbit_传感器 {
            
    /*碰撞传感器*/
     //% blockId=mbit_Collision_Sensor block="碰撞传感器 管脚 %pin|状态 %value"
-    //% weight=4
+    //% weight=70
     //% blockGap=8
     //% color="#C814B8"
            export function Collision_Sensor(pin: DigitalPin, value: enCollision): boolean {
@@ -304,7 +304,7 @@ namespace pbit_传感器 {
            
     /*触摸传感器*/
     //% blockId=mbit_Touch_Sensor block="触摸传感器 管脚 %pin|状态 %value"
-    //% weight=4
+    //% weight=92
     //% blockGap=8
     //% color="#C814B8"
            export function Touch_Sensor(pin: DigitalPin, value: enTouch): boolean {
@@ -320,7 +320,7 @@ namespace pbit_传感器 {
            
    /*灰度传感器*/ 
     //% blockId=mbit_GrayLevel block="获取灰度值 管脚 %pin"
-    //% weight=4
+    //% weight=68
     //% blockGap=8
     //% color="#C814B8"
     export function GrayLevel(pin:AnalogPin): number {
@@ -330,7 +330,7 @@ namespace pbit_传感器 {
    
     /*摇杆*/
     //% blockId=mbit_Rocker block="摇杆 X方向管脚（中间接口） %pin1|Y方向管脚（左侧接口） %pin2|Z方向管脚（右侧接口） %pin3|状态 %value"
-    //% weight=4
+    //% weight=66
     //% blockGap=8
     //% color="#C814B8"
     export function Rocker(pin1: AnalogPin, pin2: AnalogPin, pin3: DigitalPin, value: enRocker): boolean {
@@ -375,7 +375,7 @@ namespace pbit_传感器 {
     
     /*电压读取模块*/
     //% blockId=mbit_Voltage block="获取电压值（V） 管脚 %pin"
-    //% weight=4
+    //% weight=64
     //% blockGap=8
     //% color="#C814B8"
     export function Voltage(pin:AnalogPin): number {
@@ -385,7 +385,7 @@ namespace pbit_传感器 {
     
      /*滑动变阻器*/ 
     //% blockId=mbit_SlipRheostat block="变阻器电阻模拟值 管脚 %pin"
-    //% weight=4
+    //% weight=62
     //% blockGap=8
     //% color="#C814B8"
     export function SlipRheostat(pin:AnalogPin): number {
@@ -395,7 +395,7 @@ namespace pbit_传感器 {
     
     /*开启继电器*/ 
     //% blockId=mbit_Relay_Sensor_Open block="开启继电器 管脚 %pin"
-    //% weight=4
+    //% weight=60
     //% blockGap=8
     //% color="#C814B8"
            export function Relay_Sensor_Open(pin: DigitalPin): void {
@@ -405,7 +405,7 @@ namespace pbit_传感器 {
     
     /*关闭继电器*/ 
     //% blockId=mbit_Relay_Sensor_Close block="关闭继电器 管脚 %pin"
-    //% weight=4
+    //% weight=58
     //% blockGap=8
     //% color="#C814B8"
            export function Relay_Sensor_Close(pin: DigitalPin): void {
@@ -415,7 +415,7 @@ namespace pbit_传感器 {
     
     /*土壤湿度传感器*/ 
     //% blockId=mbit_SoilMoisture block="土壤湿度模拟值 管脚 %pin"
-    //% weight=4
+    //% weight=56
     //% blockGap=8
     //% color="#C814B8"
     export function SoilMoisture(pin:AnalogPin): number {
@@ -425,7 +425,7 @@ namespace pbit_传感器 {
     
     /*水位监测模块*/ 
     //% blockId=mbit_WaterLevel block="水位高度模拟值 管脚 %pin"
-    //% weight=4
+    //% weight=54
     //% blockGap=8
     //% color="#C814B8"
     export function WaterLevel(pin:AnalogPin): number {
@@ -435,7 +435,7 @@ namespace pbit_传感器 {
     
     /*LM35温度传感器*/ 
     //% blockId=mbit_LM35Temperature block="(LM35)温度值 管脚 %pin"
-    //% weight=4
+    //% weight=52
     //% blockGap=8
     //% color="#C814B8"
     export function LM35Temperature(pin:AnalogPin): number {
@@ -445,7 +445,7 @@ namespace pbit_传感器 {
     
     /*开启红外发射传感器*/ 
     //% blockId=mbit_InfraredEmission_Sensor_Open block="开启红外发射传感器 管脚 %pin"
-    //% weight=4
+    //% weight=50
     //% blockGap=8
     //% color="#C814B8"
            export function InfraredEmission_Sensor_Open(pin: DigitalPin): void {
@@ -455,7 +455,7 @@ namespace pbit_传感器 {
     
     /*关闭红外发射传感器*/ 
     //% blockId=mbit_InfraredEmission_Sensor_Close block="关闭红外发射传感器 管脚 %pin"
-    //% weight=4
+    //% weight=48
     //% blockGap=8
     //% color="#C814B8"
            export function InfraredEmission_Sensor_Close(pin: DigitalPin): void {
@@ -465,7 +465,7 @@ namespace pbit_传感器 {
     
     /*红外接收传感器*/
     //% blockId=mbit_InfraredReception_Sensor block="红外接收传感器 管脚 %pin|状态 %value"
-    //% weight=4
+    //% weight=46
     //% blockGap=8
     //% color="#C814B8"
            export function InfraredReception_Sensor(pin: DigitalPin, value: enInfraredReception): boolean {
@@ -481,7 +481,7 @@ namespace pbit_传感器 {
            
       /*震动传感器*/
     //% blockId=mbit_Shock_Sensor block="震动传感器 管脚 %pin|状态 %value"
-    //% weight=4
+    //% weight=44
     //% blockGap=8
     //% color="#C814B8"
            export function Shock_Sensor(pin: DigitalPin, value: enShock): boolean {
