@@ -103,7 +103,7 @@ namespace LCD12846 {
     /*********清屏********/
     //%blockId=LCD12864_lcmClear block="清除所有显示内容"
     //%weight=96 blockGap=10 color="#87CEEB"
-    function LCD12864_lcmClear(): void {
+    export function LCD12864_lcmClear(): void {
         LCD12864_writeCommand(0x30);
         LCD12864_writeCommand(0x80);
         for (let i = 0; i < 64;i++) {
@@ -114,7 +114,7 @@ namespace LCD12846 {
     /*********指定位置显示汉字********/
     //%blockId=LCD12864_showString_en block="在第%row行第%col列显示汉字%Str"
     //%weight=92 blockGap=10 color="#87CEEB"
-    function LCD12864_showString_en(row: number, col: number, Str: string): void {
+    export function LCD12864_showString_en(row: number, col: number, Str: string): void {
         basic.pause(100);
         LCD12864_lcmInit();
         LCD12864_writeCommand(0x30);
