@@ -112,7 +112,7 @@ namespace LCD12846 {
     }
 
     /*********指定位置显示汉字********/
-    //%blockId=LCD12864_showString_en block="在第%row行第%col列显示汉字%Str"
+    //%blockId=LCD12864_showString_en block="在第%row 行第%col 列显示汉字%Str"
     //%weight=92 blockGap=10 color="#87CEEB"
     export function LCD12864_showString_en(row: number, col: number, Str: string): void {
         basic.pause(100);
