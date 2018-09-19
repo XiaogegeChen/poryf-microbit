@@ -15,7 +15,6 @@ namespace LCD12846 {
         LCD12864_CS = pin1;
         LCD12864_SID = pin2;
         LCD12864_SCK = pin3;
-        LCD12864_lcmClear();
     }
 
     //发送一个字节的数据
