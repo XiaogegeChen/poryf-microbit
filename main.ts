@@ -4,10 +4,10 @@ namespace LCD12846 {
     let LCD12864_SID = DigitalPin.P14;
     let LCD12864_SCK = DigitalPin.P15;
     let addr_table = [0x80, 0x81, 0x82, 0x83, 0x84, 0x85, 0x86, 0x87,
-                      0x90, 0x91, 0x92, 0x93, 0x94, 0x95, 0x96, 0x97,
-                      0x88, 0x89, 0x8a, 0x8b, 0x8c, 0x8d, 0x8e, 0x8f,
-                      0x98, 0x99, 0x9a, 0x9b, 0x9c, 0x9d, 0x9e, 0x9f];
-     
+        0x90, 0x91, 0x92, 0x93, 0x94, 0x95, 0x96, 0x97,
+        0x88, 0x89, 0x8a, 0x8b, 0x8c, 0x8d, 0x8e, 0x8f,
+        0x98, 0x99, 0x9a, 0x9b, 0x9c, 0x9d, 0x9e, 0x9f];
+
     /*********选择引脚号（默认CS是13号引脚，SID是14号引脚，SCK是15号引脚）********/
     //%blockId=LCD12864_pins_Actuator block="设置LCD12864引脚 4号引脚 %pin1|5号引脚 %pin2|6号引脚 %pin3"
     //%weight=100 blockGap=10 color="#87CEEB"
@@ -19,7 +19,7 @@ namespace LCD12846 {
 
     //发送一个字节的数据
     function LCD12864_sendByte(dat: number): void {
-        for (let i = 0; i < 8;i++) {
+        for (let i = 0; i < 8; i++) {
             LCD12864_SCK = 0;
             if (dat & 0x80) {
                 LCD12864_SID = 1;
@@ -46,7 +46,7 @@ namespace LCD12846 {
             }
         }
         for (let i = 0; i < 8; i++) {
-            temp2= temp2 << 1;
+            temp2 = temp2 << 1;
             LCD12864_SCK = 0;
             LCD12864_SCK = 1;
             LCD12864_SCK = 0;
@@ -74,7 +74,7 @@ namespace LCD12846 {
     }
 
     //写数据
-    function LCD12864_writeData(data:number): void {
+    function LCD12864_writeData(data: number): void {
         LCD12864_CS = 1;
         LCD12864_checkBusy();
         LCD12864_sendByte(0xfa);
@@ -105,25 +105,25 @@ namespace LCD12846 {
     export function LCD12864_lcmClear(): void {
         LCD12864_writeCommand(0x30);
         LCD12864_writeCommand(0x80);
-        for (let i = 0; i < 64;i++) {
+        for (let i = 0; i < 64; i++) {
             LCD12864_writeData(0x20);
         }
     }
 
     /*********指定位置显示汉字********/
-    //%blockId=LCD12864_showString_en block="在第%row|行第%col|列显示汉字%Str"
+    //%blockId=LCD12864_showString_en block="行 %row|列 %col|内容%Srt"
     //%weight=92 blockGap=10 color="#87CEEB"
     export function LCD12864_showString_en(row: number, col: number, Str: string): void {
         basic.pause(100);
         LCD12864_lcmInit();
         LCD12864_writeCommand(0x30);
         LCD12864_writeCommand(addr_table[(row - 1) * 8 + (col - 1)]);
-        for (let i = 0; i < Str.length;i++) {
-            if (col==9) {
+        for (let i = 0; i < Str.length; i++) {
+            if (col == 9) {
                 col = 1;
                 row++;
             }
-            if (row==5) {
+            if (row == 5) {
                 row = 1;
             }
             LCD12864_writeCommand(addr_table[(row - 1) * 8 + (col - 1)]);
